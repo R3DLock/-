@@ -1,1 +1,1 @@
-git+R3DLock/-/discord.py@3.7.2=discord.py[voice]
+git+R3DLock/-/ЯЄĐ βƠŢ ツ
