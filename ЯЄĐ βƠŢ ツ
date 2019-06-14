@@ -1,0 +1,117 @@
+import discord #importer la librairie discord.py
+from discord.ext import commands #importer des commandes spécifiques de la librairie
+import os
+
+bot = commands.Bot(description='Description', command_prefix='r!')
+bot.remove_command('help')
+
+@bot.event
+async def on_ready():
+    await bot.change_presence(activity = discord.Game (name="ЯЄĐ MΛИİΛ ツ | r!help"))
+
+@bot.command()
+async def credits(ctx):
+    embed=discord.Embed(
+        title="-Crédits-",
+        color=discord.Colour.purple()
+        )
+
+    embed.set_author(name="ЯЄĐ βƠŢ ツ", icon_url="https://cdn.discordapp.com/attachments/588380820474167296/588392271339192321/Anime_girl.jpg")
+    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/588380820474167296/588392271339192321/Anime_girl.jpg")
+    embed.add_field(name="```Créateurs```", value="ЯЄĐ MΛИİΛ ツ", inline=True)
+    embed.add_field(name="```Codeurs```", value="ЯЄĐ LƠСΚ ツ", inline=True)
+    embed.add_field(name="```Appartenance```", value="ЯЄĐ MΛИİΛ ツ", inline=True)
+    embed.set_footer(text="ЯЄĐ βƠŢ ツ v1.1")
+
+
+
+    await ctx.send(embed=embed)
+    await ctx.message.delete()
+
+@bot.command()
+async def help(ctx):
+    embed=discord.Embed(
+        title='-Liste des commandes-',
+        colour=discord.Colour.purple()
+        )
+
+    embed.set_footer(text='ЯЄĐ βƠŢ ツ v1.1')
+    embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/588380820474167296/588392271339192321/Anime_girl.jpg')
+    embed.set_author(name='TeamLightBOT', icon_url='https://cdn.discordapp.com/attachments/588380820474167296/588392271339192321/Anime_girl.jpg')
+    embed.add_field(name='```\Commandes simple/```', value='*r!cs*')
+    embed.add_field(name='```\Commandes Utilitaires/```', value='*r!cu*')
+    embed.add_field(name='```\Coming Soon/```', value='[...]')
+    embed.add_field(name='```\Coming Soon/```', value='[...]')
+    
+    
+
+    await ctx.send(embed=embed)
+    await ctx.message.delete()
+
+@bot.command()
+@commands.has_permissions(administrator=True, manage_messages=True)
+async def say(ctx, *, texte):
+    dire = discord.Embed(
+        title = texte,
+        colour = discord.Colour.purple()
+    )
+    await ctx.send(embed=dire)
+    await ctx.message.delete()
+
+@say.error
+async def say_error(ctx,error):
+    if isinstance(error, commands.CheckFailure):
+        embed=discord.Embed(
+            title="Vous n'avez pas les permissions pour utiliser cette commande !",
+            color=discord.Colour.purple()
+            )
+
+        embed.set_author(name="ЯЄĐ βƠŢ ツ", icon_url="https://cdn.discordapp.com/attachments/588380820474167296/588392271339192321/Anime_girl.jpg")
+        embed.set_footer(text="ЯЄĐ βƠŢ ツ v1.1")
+
+        
+            
+        await ctx.send(embed=embed)
+
+@bot.command()
+async def cs(ctx):
+    embed=discord.Embed(
+        title="-Commandes simples-",
+        color=discord.Colour.purple()
+        )
+
+    embed.set_footer(text='ЯЄĐ βƠŢ ツ v1.1')
+    embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/588380820474167296/588392271339192321/Anime_girl.jpg')
+    embed.set_author(name='ЯЄĐ βƠŢ ツ', icon_url='https://cdn.discordapp.com/attachments/588380820474167296/588392271339192321/Anime_girl.jpg')
+    embed.add_field(name='```Crédits```', value='r!credits')
+    embed.add_field(name='```Aides```', value='r!help')
+    embed.add_field(name='```Say```', value='r!say [Texte]')
+    embed.add_field(name='```\Coming Soon/```', value='[...]')
+
+
+
+    await ctx.send(embed=embed)
+    await ctx.message.delete()
+
+@bot.command()
+async def cu(ctx):
+    embed=discord.Embed(
+        title="-Commandes utilitaires-",
+        color=discord.Colour.purple()
+        )
+
+    embed.set_footer(text='ЯЄĐ βƠŢ ツ v1.1')
+    embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/588380820474167296/588392271339192321/Anime_girl.jpg')
+    embed.set_author(name='ЯЄĐ βƠŢ ツ', icon_url='https://cdn.discordapp.com/attachments/588380820474167296/588392271339192321/Anime_girl.jpg')
+    embed.add_field(name='```\Coming Soon/```', value='[...]')
+    embed.add_field(name='```\Coming Soon/```', value='[...]')
+    embed.add_field(name='```\Coming Soon/```', value='[...]')
+    embed.add_field(name='```\Coming Soon/```', value='[...]')
+
+
+
+    await ctx.send(embed=embed)
+    await ctx.message.delete()
+
+
+bot.run('TOKEN')
