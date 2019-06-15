@@ -7,9 +7,9 @@ bot.remove_command('help')
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity = discord.Game (name="ЯЄĐ MΛИİΛ ツ | r!help"))
+    await bot.change_presence(game=discord.Game(name="ЯЄĐ βƠŢ ツ | r!help"))
 
-@bot.command()
+@bot.command(pass_context=True)
 async def credits(ctx):
     embed=discord.Embed(
         title="-Crédits-",
@@ -25,10 +25,10 @@ async def credits(ctx):
 
 
 
-    await ctx.send(embed=embed)
+    await ctx.channel.send(embed=embed)
     await ctx.message.delete()
 
-@bot.command()
+@bot.command(pass_context=True)
 async def help(ctx):
     embed=discord.Embed(
         title='-Liste des commandes-',
@@ -45,17 +45,17 @@ async def help(ctx):
     
     
 
-    await ctx.send(embed=embed)
+    await ctx.channel.send(embed=embed)
     await ctx.message.delete()
 
-@bot.command()
+@bot.command(pass_context=True)
 @commands.has_permissions(administrator=True, manage_messages=True)
 async def say(ctx, *, texte):
     dire = discord.Embed(
         title = texte,
         colour = discord.Colour.purple()
     )
-    await ctx.send(embed=dire)
+    await ctx.channel.send(embed=dire)
     await ctx.message.delete()
 
 @say.error
@@ -71,9 +71,9 @@ async def say_error(ctx,error):
 
         
             
-        await ctx.send(embed=embed)
+        await ctx.channel.send(embed=embed)
 
-@bot.command()
+@bot.command(pass_context=True)
 async def cs(ctx):
     embed=discord.Embed(
         title="-Commandes simples-",
@@ -90,10 +90,10 @@ async def cs(ctx):
 
 
 
-    await ctx.send(embed=embed)
+    await ctx.channel.send(embed=embed)
     await ctx.message.delete()
 
-@bot.command()
+@bot.command(pass_context=True)
 async def cu(ctx):
     embed=discord.Embed(
         title="-Commandes utilitaires-",
@@ -110,8 +110,8 @@ async def cu(ctx):
 
 
 
-    await ctx.send(embed=embed)
+    await ctx.channel.send(embed=embed)
     await ctx.message.delete()
 
 
-bot.run('TOKEN')
+bot.run('TOKEN)
